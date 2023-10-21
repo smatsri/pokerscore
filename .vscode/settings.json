@@ -1,0 +1,9 @@
+{
+  "dotnet.defaultSolution": "PokerScore.sln",
+  "editor.detectIndentation": false,
+  "[csharp]": {
+    "editor.tabSize": 4,
+    "editor.maxTokenizationLineLength": 2500,
+    "editor.inlineSuggest.suppressSuggestions": false
+  }
+}
