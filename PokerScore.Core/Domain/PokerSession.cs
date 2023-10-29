@@ -1,4 +1,4 @@
-﻿namespace PokerScore.Core;
+﻿namespace PokerScore.Core.Domain;
 
 public record class PokerSession
 {
