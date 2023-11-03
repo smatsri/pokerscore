@@ -1,4 +1,3 @@
-using HotChocolate.Data;
 using PokerScore.Core.Domain;
 using PokerScore.Data;
 

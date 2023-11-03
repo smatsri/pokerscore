@@ -1,14 +1,16 @@
-using HotChocolate.Data;
 using Microsoft.EntityFrameworkCore;
 using PokerScore.Data;
 using PokerScore.Api;
+using PokerScore.Api.Validation;
+using HotChocolate.Types.Descriptors;
+using System.Reflection;
+using HotChocolate.Execution;
+using HotChocolate.Execution.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<PokerScoreDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-builder.Services.AddSingleton<PokerScore.MyData.MyDataService>();
 
 builder.Services
     .AddGraphQLServer()
@@ -16,12 +18,15 @@ builder.Services
     .AddFiltering()
     .AddProjections()
     .AddQueryType()
-    //.AddMutationType()
-    .AddType<PokerScore.MyData.MyDataQueries>()
-    .AddType<Query>();
+    .AddType<Query>()
+    .UseDefaultPipeline()
+    .UseRequest<ValidationMiddleware>()
+    ;
+
+;
 
 var app = builder.Build();
-//app.UseHttpsRedirection();
+
 app.MapGraphQL();
 
 app.Run();

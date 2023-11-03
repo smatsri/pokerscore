@@ -23,4 +23,8 @@
     <ProjectReference Include="..\PokerScore.Data\PokerScore.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Middleware\" />
+  </ItemGroup>
+
 </Project>
