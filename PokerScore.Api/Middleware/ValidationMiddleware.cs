@@ -1,4 +1,6 @@
-﻿using HotChocolate.Execution;
+﻿using System.Diagnostics.CodeAnalysis;
+using HotChocolate.Execution;
+using HotChocolate.Language;
 
 namespace PokerScore.Api.Validation;
 
@@ -13,8 +15,14 @@ internal sealed class ValidationMiddleware
 
     public async ValueTask InvokeAsync(IRequestContext context)
     {
-        Console.WriteLine("+++++---------validate------------------------++++");
-        await next(context).ConfigureAwait(continueOnCapturedContext: false);
+
+        if (context.Operation == null || context.Operation.Type != OperationType.Mutation)
+        {
+            await next(context).ConfigureAwait(continueOnCapturedContext: false);
+        }
+
+
+        Console.WriteLine("+++++---------validate-----------------++++");
     }
 
 }
