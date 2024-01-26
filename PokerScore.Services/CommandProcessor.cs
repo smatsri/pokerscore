@@ -1,6 +1,6 @@
 ﻿namespace PokerScore.Services;
 
-public class PlayerService
+public class CommandProcessor
 {
 
 }
