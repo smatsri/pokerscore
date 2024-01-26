@@ -1,0 +1,1 @@
+dotnet watch run --project .\PokerScore.Api\PokerScore.Api.csproj --no-hot-reload
